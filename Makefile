@@ -5,7 +5,7 @@ SRCC_FILES = client.c
 SRCS_FILES = server.c
 SRCC = $(addprefix $(SRC_DIR), $(SRCC_FILES))
 SRCS = $(addprefix $(SRC_DIR), $(SRCS_FILES))
-
+SRC_DIR = src/
 OBJC = ${SRCC:.c=.o}
 OBJS = ${SRCS:.c=.o}
 CC			= gcc
