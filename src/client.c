@@ -38,7 +38,7 @@ void ft_atob(int pid, char c)
             kill(pid, SIGUSR1);
         else
             kill(pid, SIGUSR2);
-        usleep(500);
+        usleep(1000);
         bit++;
     }
 
@@ -53,11 +53,17 @@ int main(int argc, char **argv)
     if (argc == 3)
     {
         pid = ft_atoi(argv[1]);
+        if (pid <= 0)
+        {
+            ft_printf("Error: Invalid PID\n");
+            return (1);
+        }
         while (argv[2][x] != '\0')
         {
             ft_atob(pid, argv[2][x]);
             x++;
         }
+        ft_atob(pid, '\0');
     }
     else
     {
