@@ -39,7 +39,7 @@ static int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-void	ft_atob(int pid, char c)
+int	ft_atob(int pid, char c)
 {
 	int	bit;
 
@@ -47,12 +47,25 @@ void	ft_atob(int pid, char c)
 	while (bit < 8)
 	{
 		if ((c & (0x01 << bit)))
-			kill(pid, SIGUSR1);
+		{
+			if (kill(pid, SIGUSR1) == -1)
+			{
+				ft_printf("Error sending SIGUSR1\n");
+				return (1);
+			}
+		}
 		else
-			kill(pid, SIGUSR2);
+		{
+			if (kill(pid, SIGUSR2) == -1)
+			{
+				ft_printf("Error sending SIGUSR2\n");
+				return (1);
+			}
+		}
 		usleep(1000);
 		bit++;
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -71,10 +84,12 @@ int	main(int argc, char **argv)
 		}
 		while (argv[2][x] != '\0')
 		{
-			ft_atob(pid, argv[2][x]);
+			if (ft_atob(pid, argv[2][x]) != 0)
+				return (1);
 			x++;
 		}
-		ft_atob(pid, '\0');
+		if (ft_atob(pid, '\0') != 0)
+			return (1);
 	}
 	else
 	{

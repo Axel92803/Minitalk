@@ -31,6 +31,21 @@ void	ft_btoa(int sig_n)
 	}
 }
 
+int	setup_signal_handlers(void)
+{
+	if (signal(SIGUSR1, ft_btoa) == SIG_ERR)
+	{
+		ft_printf("Error setting up SIGUSR1 handler\n");
+		return (1);
+	}
+	if (signal(SIGUSR2, ft_btoa) == SIG_ERR)
+	{
+		ft_printf("Error setting up SIGUSR2 handler\n");
+		return (1);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	int	pid;
@@ -43,11 +58,11 @@ int	main(int argc, char **argv)
 	}
 	pid = getpid();
 	ft_printf("Server PID: %d\n", pid);
+	if (setup_signal_handlers() != 0)
+		return (1);
 	while (argc == 1)
 	{
-		signal(SIGUSR1, ft_btoa);
-		signal(SIGUSR2, ft_btoa);
-		pause ();
+		pause();
 	}
 	return (0);
 }
