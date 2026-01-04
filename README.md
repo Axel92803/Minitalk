@@ -344,7 +344,7 @@ void    send_char(int pid, char c)
 ## 🎓 42 School Evaluation
 
 **Grade:** 100/100 ✅  
-**Evaluation Date:** [Your completion date]
+**Evaluation Date:** [N/A]
 
 **Peer Review Highlights:**
 - Clean, efficient implementation
