@@ -2,7 +2,7 @@
 
 ![42 School](https://img.shields.io/badge/42-000000?style=for-the-badge&logo=42&logoColor=white)
 ![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-![Grade](https://img.shields.io/badge/Grade-100%2F125-success?style=for-the-badge)
+![Grade](https://img.shields.io/badge/Grade-100%2F100-success?style=for-the-badge)
 
 > **Client-Server communication using UNIX signals - A deep dive into Inter-Process Communication**
 
